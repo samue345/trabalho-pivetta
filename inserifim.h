@@ -64,8 +64,9 @@ ListaP *inserirFimP(ListaP *lista, Professor *professor)
       ListaP *temp = lista;
       while (temp != NULL)
       {
-         if(lista->info == professor)
-            return lista;
+          int igual=strcmp(lista->info->nome, professor->nome);
+           if(igual == 0 && lista->info->codigo == professor->codigo)
+               return lista;
 
          temp = temp->prox;
       }
@@ -77,23 +78,24 @@ ListaP *inserirFimP(ListaP *lista, Professor *professor)
    
 
 }
-ListaC *inserirFimC(ListaC *lista, Cadeira *cadeira)
+ListaC *inserirFimC(ListaC *lista, Cadeira *ca)
 {
    if(lista != NULL)
    {
       ListaC *temp = lista;
       while (temp != NULL)
       {
-         if(lista->info == cadeira)
-            return lista;
+          int eq=strcmp(lista->info->nome, ca->nome);
+         int eq2=strcmp(lista->info->curso, ca->curso);
+         if(lista->info->codigo == ca->codigo && lista->info->carga == ca->carga && eq == 0 && eq2 == 0)
 
          temp = temp->prox;
       }
    }
    ListaC *novo=(ListaC*)malloc(sizeof(ListaC));
    if(lista != NULL)
-      ultimoC(lista)->prox=inserirInicioC(NULL, cadeira);
-      return lista == NULL ? inserirInicioC(NULL, cadeira) : lista;
+      ultimoC(lista)->prox=inserirInicioC(NULL, ca);
+      return lista == NULL ? inserirInicioC(NULL, ca) : lista;
    
 
 }

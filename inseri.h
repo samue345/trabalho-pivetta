@@ -12,7 +12,9 @@ Lista *inserirInicio(Lista *lista, Aluno *elemento)
       Lista *temp = lista;
       while (temp != NULL)
       {
-         if(lista->info == elemento)
+         int igual=strcmp(lista->info->nome, elemento->nome);
+         int igual2=strcmp(lista->info->curso, elemento->curso);
+         if(lista->info->matricula == elemento->matricula && igual == 0 && igual2 == 0)
             return lista;
 
          temp = temp->prox;
@@ -30,8 +32,10 @@ ListaP *inserirInicioP(ListaP *lista, Professor *elemento)
       ListaP *temp = lista;
       while (temp != NULL)
       {
-         if(lista->info == elemento)
-            return lista;
+          int igual=strcmp(lista->info->nome, elemento->nome);
+           if(igual == 0 && lista->info->codigo == elemento->codigo)
+               return lista;
+
 
          temp = temp->prox;
       }
@@ -41,21 +45,22 @@ ListaP *inserirInicioP(ListaP *lista, Professor *elemento)
    novo->prox = lista;
    return novo;
 }
-ListaC *inserirInicioC(ListaC *lista, Cadeira *elemento)
+ListaC *inserirInicioC(ListaC *lista, Cadeira *ele)
 {
    if (lista != NULL)
    {
       ListaC *temp = lista;
       while (temp != NULL)
       {
-         if(lista->info == elemento)
+         int eq=strcmp(lista->info->nome, ele->nome);
+         int eq2=strcmp(lista->info->curso, ele->curso);
+         if(lista->info->codigo == ele->codigo && lista->info->carga == ele->carga && eq == 0 && eq2 == 0)
             return lista;
-
          temp = temp->prox;
       }
    }
    ListaC *novo = (ListaC*)malloc(sizeof(ListaC));
-   novo->info = elemento;
+   novo->info = ele;
    novo->prox = lista;
    return novo;
 }
