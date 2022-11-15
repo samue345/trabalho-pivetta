@@ -1,3 +1,38 @@
+ #ifndef ESTRUTURAS_H
+ #define ESTRUTURAS_H  
+ typedef struct
+ {
+   int matricula;
+   char *curso;
+   char *nome;
+ }Aluno;
+typedef struct
+{
+   int codigo;
+   char *nome;
+ }Professor;
+ 
+ typedef struct
+{
+   int codigo, carga;
+   char *nome;
+   char *curso;
+
+ }Cadeira;
+ 
+ typedef struct 
+ {
+   int id;
+   Aluno* alun;
+   Cadeira* ca;
+   Professor* prof;
+ }Turma;
+ 
+ 
+ 
+ 
+ 
+ typedef struct lista{  
    Aluno *info;
    struct lista *prox;
 } Lista;
